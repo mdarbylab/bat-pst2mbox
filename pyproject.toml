@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bat-pst2mbox"
+version = "0.0.0"
+description = "Convert Outlook PST files to per-folder mbox files for import into The Bat!"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+bat-pst2mbox = "bat_pst2mbox.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bat_pst2mbox"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
